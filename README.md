@@ -123,7 +123,20 @@
    
    
     **[⬆ Back to Top](#table-of-contents)**
+
+12. ### What is the difference between stateful and stateless?
+    A stateless process or application can be understood in isolation. There is no stored knowledge of or reference to past transactions. Each transaction is made as if from scratch for the first time.
+
+    Stateful applications and processes, however, are those that can be returned to again and again, like online banking or email. They’re performed with the context of previous transactions and the current transaction may be affected by what happened during previous transactions. For these reasons, stateful apps use the same servers each time they process a request from a user.  
+
+    If a stateful transaction is interrupted, the context and history have been stored so you can more or less pick up where you left off. Stateful apps track things like window location, setting preferences, and recent activity. You can think of stateful transactions as an ongoing periodic conversation with the same person.
+
+    In terms of authorization,
+    - **Stateful** = save authorization info on server side, this is the traditional way
+    - **Stateless** = save authorization info on client side, along with a signature to ensure integrity, in form of tokens
    
+    **[⬆ Back to Top](#table-of-contents)**
+    
 ---
 
 ## Django Rest Framework
@@ -251,6 +264,8 @@
     **[⬆ Back to Top](#table-of-contents)**
 
 12. ### What is Token Authentication?
+    Tokens are pieces of data that carry just enough information to facilitate the process of determining a user's identity or authorizing a user to perform an action. All in all, tokens are artifacts that allow application systems to perform the authorization and authentication process.
+    
     Token-based authentication is **stateless**: once a client sends the initial user credentials to the server, a unique token is generated and then stored by the client as either a cookie or in local storage. This token is then passed in the header of each incoming HTTP request and the server uses it to verify that a user is authenticated. The server itself does not keep a record of the user, just whether a token is valid or not.
     
     **[⬆ Back to Top](#table-of-contents)**
@@ -275,6 +290,10 @@
     **[⬆ Back to Top](#table-of-contents)**
 
 15. ### Where should token be saved - cookie or localStorage?
+    With token-based auth, you are given the choice of where to store the JWT. Commonly, the JWT is placed in the browser's local storage and this works well for most use cases. There are some issues with storing JWTs in local storage to be aware of. Unlike cookies, local storage is sandboxed to a specific domain and its data cannot be accessed by any other domain including sub-domains.
+
+    You can store the token in a cookie instead, but the max size of a cookie is only 4kb so that may be problematic if you have many claims attached to the token. Additionally, you can store the token in session storage which is similar to local storage but is cleared as soon as the user closes the browser.
+
     Tokens stored in both cookies and localStorage are vulnerable to XSS attacks. The current best practice is to store tokens in a cookie with the httpOnly and Secure cookie flags.
 
     **[⬆ Back to Top](#table-of-contents)**
@@ -311,5 +330,136 @@
     **[⬆ Back to Top](#table-of-contents)**
     
 20. ### What is the difference between cookie and tokens?
+    Cookie-based authentication is stateful. This means that an authentication record or session must be kept both server and client-side. The server needs to keep track of active sessions in a database, while on the front-end a cookie is created that holds a session identifier, thus the name cookie based authentication.
+
+    Token-based authentication is stateless. The server does not keep a record of which users are logged in or which JWTs have been issued. Instead, every request to the server is accompanied by a token which the server uses to verify the authenticity of the request. The token is generally sent as an addition Authorization header in the form of Bearer {JWT}, but can additionally be sent in the body of a POST request or even as a query parameter.
+
+    > Read more [here](https://stackoverflow.com/questions/17000835/token-authentication-vs-cookies)
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+21. ### What's an access token?
+    When a user logins in, the authorization server issues an access token, which is an artifact that client applications can use to make secure calls to an API server. When a client application needs to access protected resources on a server on behalf of a user, the access token lets the client signal to the server that it has received authorization by the user to perform certain tasks or access certain resources.
     
+    **[⬆ Back to Top](#table-of-contents)**
+
+22. ### What is meant by a bearer token?
+    A bearer token stands for a token that can be used by those who hold it. The access token thus acts as a credential artifact to access protected resources rather than an identification artifact. 
+
+    **[⬆ Back to Top](#table-of-contents)**
     
+23. ### What is the security threat to access token?
+    Malicious users could theoretically compromise a system and steal access tokens, which in turn they could use to access protected resources by presenting those tokens directly to the server.
+
+    As such, it's critical to have security strategies that minimize the risk of compromising access tokens. One mitigation method is to create access tokens that have a short lifespan: they are only valid for a short time defined in terms of hours or days.  
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+24. ### What is a refresh token?
+    For security purposes, access tokens may be valid for a short amount of time. Once they expire, client applications can use a refresh token to "refresh" the access token. That is, a refresh token is a credential artifact that lets a client application get new access tokens without having to ask the user to log in again.
+
+    The client application can get a new access token as long as the refresh token is valid and unexpired. Consequently, a refresh token that has a very long lifespan could theoretically give infinite power to the token bearer to get a new access token to access protected resources anytime. The bearer of the refresh token could be a legitimate user or a malicious user.
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+25. ### What are the best practices when using token authentication?
+    Some basic considerations to keep in mind when using tokens:
+
+    - Keep it secret. Keep it safe.
+    - Do not add sensitive data to the payload.
+    - Give tokens an expiration.
+    - Embrace HTTPS.
+    - Consider all of your authorization use cases.
+    - Store and reuse.
+    
+    **[⬆ Back to Top](#table-of-contents)**
+
+26. ### What is cookie-based authentication?
+    A request to the server is always signed in by authorization cookie.
+    **Pros:**
+    - Cookies can be marked as "http-only" which makes them impossible to be read on the client side. This is better for XSS-attack protection.
+    - Comes out of the box - you don't have to implement any code on the client side.
+    
+    **Cons:**
+    - Bound to a single domain.
+    - Vulnerable to XSRF. You have to implement extra measures to make your site protected against cross site request forgery.
+    - Are sent out for every single request, (even for requests that don't require authentication).
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+27. ### What are viewsets in DRF?
+    A viewset is a way to combine the logic for multiple related views into a single class. In other words, one viewset can replace multiple views. It is a class that is simply a type of class-based View, that does not provide any method handlers such as `.get()` or `.post()`, and instead provides actions such as `.list()` and `.create()`.
+
+    **[⬆ Back to Top](#table-of-contents)**
+ 
+28. ### What are routers in DRF?
+    Routers work directly with viewsets to automatically generate URL patterns for us. Django REST Framework has two default routers: SimpleRouter and DefaultRouter.
+    - **SimpleRouter** - This router includes routes for the standard set of list, create, retrieve, update, partial_update and destroy actions.
+    - **Default Router** - This router is similar to SimpleRouter, but additionally includes a default API root view, that returns a response containing hyperlinks to all the list views. It also generates routes for optional `.json` style format suffixes.
+
+    **[⬆ Back to Top](#table-of-contents)**
+
+29. ### What is the difference between APIViews and Viewsets in DRF?
+    DRF has two main systems for handling views:
+
+    - **`APIView`:** This provides methods handler for http verbs: get, post, put, patch, and delete.
+    - **`ViewSet`:** This is an abstraction over `APIView`, which provides actions as methods:
+      - **list:** read only, returns multiple resources (http verb: get). Returns a list of dicts.
+      - **retrieve:** read only, single resource (http verb: get, but will expect an id in the url). Returns a single dict.
+      - **create:** creates a new resource (http verb: post)
+      - **update/partial_update:** edits a resource (http verbs: put/patch)
+      - **destroy:** removes a resource (http verb: delete) 
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+30. ### What is the difference between `GenericAPIView` and `GenericViewset`?
+    - **`GenericAPIView`:** for APIView, this gives you shortcuts that map closely to your database models. Adds commonly required behavior for standard list and detail views. Gives you some attributes like, the `serializer_class`, also gives `pagination_class`, `filter_backend`, etc
+
+    - **`GenericViewSet`:** There are many GenericViewSet, the most common being `ModelViewSet`. They inherit from `GenericAPIView` and have a full implementation of all of the actions: list, retrieve, destroy, updated, etc.
+
+     **[⬆ Back to Top](#table-of-contents)**
+
+---
+### About Author
+
+|                                                                                         <a href="https://github.com/PragatiVerma18"><img src="https://avatars2.githubusercontent.com/u/42115530?s=460&u=a6f9c19a67bcc69645824c5dabf75b80f22a2dc0&v=4" width=150px height=150px /></a>                                                                                         |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                                                                                                        **[Pragati Verma](https://www.linkedin.com/in/PragatiVerma18/)**                                                                                                                                        |
+
+> **_Need help?_** 
+> **_Feel free to contact me @ [itispragativerma@gmail.com](mailto:itispragativerma@gmail.com?Subject=SnippetShareProject)_**
+
+[![GitHub followers](https://img.shields.io/github/followers/pragativerma18.svg?label=Follow%20@pragativerma18&style=social)](https://github.com/PragatiVerma18/) [![Twitter Follow](https://img.shields.io/twitter/follow/pragati_verma18?style=social)](https://twitter.com/pragati_verma18) 
+
+### Connect with me  
+<div align="center">
+<a href="https://github.com/PragatiVerma18" target="_blank">
+<img src=https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
+</a>
+<a href="https://twitter.com/pragati_verma18" target="_blank">
+<img src=https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white alt=twitter style="margin-bottom: 5px;" />
+</a>
+<a href="https://codepen.com/pragativerma" target="_blank">
+<img src=https://img.shields.io/badge/codepen-%23131417.svg?&style=for-the-badge&logo=codepen&logoColor=white alt=codepen style="margin-bottom: 5px;" />
+</a>
+<a href="https://dev.to/pragativerma18" target="_blank">
+<img src=https://img.shields.io/badge/dev.to-%2308090A.svg?&style=for-the-badge&logo=dev.to&logoColor=white alt=devto style="margin-bottom: 5px;" />
+</a>
+<a href="https://stackoverflow.com/users/10364459" target="_blank">
+<img src=https://img.shields.io/badge/stackoverflow-%23F28032.svg?&style=for-the-badge&logo=stackoverflow&logoColor=white alt=stackoverflow style="margin-bottom: 5px;" />
+</a>
+<a href="https://linkedin.com/in/pragativerma18" target="_blank">
+<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.facebook.com/pragati.verma.56863221" target="_blank">
+<img src=https://img.shields.io/badge/facebook-%232E87FB.svg?&style=for-the-badge&logo=facebook&logoColor=white alt=facebook style="margin-bottom: 5px;" />
+</a>
+<a href="https://instagram.com/pragativerma18" target="_blank">
+<img src=https://img.shields.io/badge/instagram-%23000000.svg?&style=for-the-badge&logo=instagram&logoColor=white alt=instagram style="margin-bottom: 5px;" />
+</a>
+<a href="https://medium.com/@itispragativerma" target="_blank">
+<img src=https://img.shields.io/badge/medium-%23292929.svg?&style=for-the-badge&logo=medium&logoColor=white alt=medium style="margin-bottom: 5px;" />
+</a>  
+</div>  
+
+---
