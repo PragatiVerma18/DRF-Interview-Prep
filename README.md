@@ -18,6 +18,12 @@
 </a>
 </div>
 
+<div align="center">
+  <a href="https://github.com/PragatiVerma18/DRF-Interview-Prep/blob/master/DRF_Interview_Questions__Answers.pdf" target="_blank">
+<img src="https://manceppo.com/wp-content/uploads/2019/05/download-button.png" alt="download" style="height:100; width: 200; margin-bottom: 5px;" />
+</a>
+</div>
+
 ---
 
 ### Table of Contents
