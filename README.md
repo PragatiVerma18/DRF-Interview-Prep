@@ -20,6 +20,59 @@
 
 ---
 
+### Table of Contents
+| No. | Questions |
+| --- | --------- |
+|   | **[Core Concepts](#core-concepts)** |
+|1  | [What is an API?](#what-is-an-api) |
+|2  | [What is a web API?](#what-is-a-web-api) |
+|3  | [What is a REST API?](#what-is-a-rest-api) |
+|4  | [What is an endpoint?](#what-is-an-endpoint) |
+|5  | [What are HTTP Verbs?](#what-are-http-verbs) |
+|6  | [What is the difference between HTTP and HTTPS?](#what-is-the-difference-between-http-and-https) |
+|7  | [What are status codes?](#what-are-status-codes) |
+|8  | [What is the difference between authentication and authorization?](#what-is-the-difference-between-authentication-and-authorization) |
+|9  | [What is a browsable API?](#what-is-a-browsable-api)|
+|10  | [What is CORS?](#what-is-cors) |
+|11  | [How to fix CORS error in Django?](#how-to-fix-cors-error-in-django) |
+|12 | [What is the difference between stateful and stateless?](#what-is-the-difference-between-stateful-and-stateless)  |
+|  | **[Django Rest Framework](#django-rest-framework)**  |
+|1  | [What is Django Rest Framework?](#what-is-django-rest-framework) |
+|2  | [What are benefits of using Django Rest Framework?](#what-are-benefits-of-using-django-rest-framework) |
+|3  | [What are serializers?](#what-are-serializers) |
+|4  | [What are Permissions in DRF?](#what-are-permissions-in-drf) |
+|5  | [How to add login in the browsable API provided by DRF?](#how-to-add-login-in-the-browsable-api-provided-by-drf) |
+|6  | [What are Project-Level Permissions?](#what-are-project-level-permissions) |
+|7  | [How to make custom permission classes?](#how-to-make-custom-permission-classes)|
+|8  | [What is Basic Authentication?](#what-is-basic-authentication) |
+|9  | [What are the disadvantages of Basic Authentication?](#what-are-the-disadvantages-of-basic-authentication) |
+|10  | [What is session authentication?](#what-is-session-authentication) |
+|11  | [What are the pros and cons of session authentication?](#what-are-the-pros-and-cons-of-session-authentication) |
+|12  | [What is Token Authentication?](#what-is-token-authentication) |
+|13  | [What are pros and cons of token authentication?](#what-are-pros-and-cons-of-token-authentication) |
+|14  | [What is the difference between cookies vs localStorage?](#what-is-the-difference-between-cookies-vs-localstorage) |
+|15  | [Where should token be saved - cookie or localStorage?](#where-should-token-be-saved-cookie-or-localstorage) |
+|16  | [What are disadvantages of Django REST Framework's built-in TokenAuthentication?](#what-are-disadvantages-of-django-rest-framework-s-built-in-tokenauthentication) |
+|17  | [What are JSON Web Tokens(JWTs)?](#what-are-json-web-tokens-jwts)  |
+|18  | [What are benefits of JWT?](#what-are-benefits-of-jwt) |
+|19  | [What is the difference between a session and cookie?](#what-is-the-difference-between-a-session-and-cookie) |
+|20  | [What is the difference between cookie and tokens?](#what-is-the-difference-between-cookie-and-tokens) |
+|21  | [What's an access token?](#what-s-an-access-token) |
+|22  | [What is meant by a bearer token?](#what-is-meant-by-a-bearer-token) |
+|23  | [What is the security threat to access token?](#what-is-the-security-threat-to-access-token) |
+|24  | [What is a refresh token?](#what-is-a-refresh-token) |
+|25  | [What are the best practices when using token authentication?](#what-are-the-best-practices-when-using-token-authentication) |
+|26  | [What is cookie-based authentication?](#what-is-cookie-based-authentication) |
+|27  | [What are viewsets in DRF?](#what-are-viewsets-in-drf) |
+|28  | [What are routers in DRF?](#what-are-routers-in-drf) |
+|29  | [What is the difference between APIViews and Viewsets in DRF?](#what-is-the-difference-between-apiviews-and-viewsets-in-drf) |
+|30  | [What is the difference between `GenericAPIView` and `GenericViewset`?](#what-is-the-difference-between-genericapiview-and-genericviewset) |
+| | [About Author](#about-author) | 
+| | [Connect with me](#connect-with-me)| 
+
+
+---
+
 ## Core Concepts
 
 
