@@ -119,7 +119,7 @@
 
 5. ### What are HTTP Verbs?
    HTTP defines a set of request methods to indicate the desired action to be performed for a given resource. Although they can also be nouns, these request methods    are sometimes referred to as HTTP verbs.
-   ![HTTP Verbs](https://user-images.githubusercontent.com/42115530/104155356-08919a00-540d-11eb-94f8-316e8f591177.png)
+   ![HTTP Verbs](file:///C:/Users/try/Downloads/104155356-08919a00-540d-11eb-94f8-316e8f591177+(1).jpg.html)
 
    **[⬆ Back to Top](#table-of-contents)**
 
