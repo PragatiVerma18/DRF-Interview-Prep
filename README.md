@@ -268,7 +268,7 @@
     **[⬆ Back to Top](#table-of-contents)**
 
 7. ### How to make custom permission classes?
-   To make custom permission class, create a file named `permissions.py` that imports permissions at the top adn then create your custom class, for example - `IsAuthorOrReadOnly` which extends `BasePermission`, then we override `has_object_permission`. 
+   To make custom permission class, create a file named `permissions.py` that imports permissions at the top and then create your custom class, for example - `IsAuthorOrReadOnly` which extends `BasePermission`, then we override `has_object_permission`. 
 
     **[⬆ Back to Top](#table-of-contents)**
     
