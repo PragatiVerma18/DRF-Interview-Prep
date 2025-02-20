@@ -2,6 +2,8 @@
 
 > Click :star: if you like the project. Pull Request are highly appreciated. Follow me [@pragati_verma18](https://twitter.com/pragati_verma18) for technical updates.
 
+> I have added a new section on [Django + Celery + Redis + RabbitMQ Interview Questions](https://github.com/PragatiVerma18/DRF-Interview-Prep/blob/master/django-celery-redis-interview-questions.md). Check it out!
+
 ---
 <div align="center">
 <a href="https://twitter.com/pragati_verma18" target="_blank">
@@ -20,9 +22,10 @@
 
 <div align="center">
   <a href="https://github.com/PragatiVerma18/DRF-Interview-Prep/blob/master/DRF_Interview_Questions__Answers.pdf" target="_blank">
-<img src="https://manceppo.com/wp-content/uploads/2019/05/download-button.png" alt="download" style="height:100; width: 200; margin-bottom: 5px;" />
+<img src="https://github.com/user-attachments/assets/b9d5e189-1edd-43a2-958b-7ebc6cf45afd" alt="download" style="height:200px; width:200px;" />
 </a>
 </div>
+
 
 ---
 
@@ -477,6 +480,8 @@
     - **`GenericViewSet`:** There are many GenericViewSet, the most common being `ModelViewSet`. They inherit from `GenericAPIView` and have a full implementation of all of the actions: list, retrieve, destroy, updated, etc.
 
      **[⬆ Back to Top](#table-of-contents)**
+
+> I have added a new section on [Django + Celery + Redis + RabbitMQ Interview Questions](https://github.com/PragatiVerma18/DRF-Interview-Prep/blob/master/django-celery-redis-interview-questions.md). Check it out!
 
 ---
 ### About Author
